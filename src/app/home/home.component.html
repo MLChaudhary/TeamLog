@@ -1,0 +1,21 @@
+<div class="container">
+    <header>
+      <div class="user-info">
+        <span>Welcome, {{FirstName}}</span>
+        <button (click)="logout()">Logout</button>
+      </div>
+    </header>
+    
+    <nav>
+      <ul>
+        <li><button (click)="navigateToEmployees()"><a routerLink="/employees"></a>Employees</button></li>
+        <li><button (click)="navigateToReports()"><a routerLink="/reports"></a>Reports</button></li>
+        <li><button (click)="navigateToAttendance()"><a routerLink="/attendance"></a>Attendance</button></li>
+      </ul>
+    </nav>
+  
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+  

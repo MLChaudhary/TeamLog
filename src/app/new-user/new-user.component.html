@@ -1,0 +1,91 @@
+
+  <div class="registration-container">
+      <div class="header">     
+        <h2>New User Registration</h2>
+        <button class="close-button" (click)="onCloseClick()">X Close</button>
+      </div>
+      <div *ngIf="registrationSuccess" class="success-message">
+        Registration successful!
+      </div>
+      <form [formGroup]="newUserRegistrationForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="firstName">First Name *</label>
+          <input type="text" id="firstName" name="firstName" required formControlName="firstName" tabindex="1">
+          <div *ngIf="newUserRegistrationForm.get('firstName')?.hasError('required') && newUserRegistrationForm.get('firstName')?.touched" class="validation-message">
+            First Name is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="middleName">Middle Name *</label>
+          <input type="text" id="middleName" name="middleName" required formControlName="middleName" tabindex="2">
+          <div *ngIf="newUserRegistrationForm.get('middleName')?.hasError('required') && newUserRegistrationForm.get('middleName')?.touched" class="validation-message">
+            Middel Name is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name *</label>
+          <input type="text" id="lastName" name="lastName" required formControlName="lastName" tabindex="3">
+          <div *ngIf="newUserRegistrationForm.get('lastName')?.hasError('required') && newUserRegistrationForm.get('lastName')?.touched" class="validation-message">
+            Last Name is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="country">Country *</label>
+          <input type="text" id="country" name="country" required formControlName="country" tabindex="4">
+          <div *ngIf="newUserRegistrationForm.get('country')?.hasError('required') && newUserRegistrationForm.get('country')?.touched" class="validation-message">
+            Country is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="mobileNo">Mobile No *</label>
+          <input type="text" id="mobileNo" name="mobileNo" required formControlName="mobileNo" tabindex="5">
+          <div *ngIf="newUserRegistrationForm.get('mobileNo')?.hasError('required') && newUserRegistrationForm.get('mobileNo')?.touched" class="validation-message">
+            Mobile No is required.
+          </div>
+          <div *ngIf="newUserRegistrationForm.get('mobileNo')?.hasError('invalidMobileNumber') && !newUserRegistrationForm.get('mobileNo')?.hasError('required') && newUserRegistrationForm.get('mobileNo')?.touched" class="validation-message">
+            Mobile Number must be 10 digits.
+          </div> 
+        </div>      
+        <div class="form-group">
+          <label for="emailId">Email ID *</label>
+          <input type="text" id="emailId" name="emailId" required formControlName="emailId" tabindex="6">
+          <div *ngIf="newUserRegistrationForm.get('emailId')?.hasError('required') && newUserRegistrationForm.get('emailId')?.touched" class="validation-message">
+            Email Id is required.
+          </div>
+          <div *ngIf="newUserRegistrationForm.get('emailId')?.hasError('invalidEmail') && !newUserRegistrationForm.get('emailId')?.hasError('required') && newUserRegistrationForm.get('emailId')?.touched" class="validation-message">
+            Please enter a valid email address.
+          </div>    
+          <div *ngIf="emailExists && newUserRegistrationForm.get('emailId')?.touched" class="validation-message">
+            You are already registered.
+          </div>      
+        </div>
+        <div class="form-group">
+          <label for="alternateNo">Alternate No.</label>
+          <input type="text" id="alternateNo" name="alternateNo" formControlName="alternateNo">
+        </div>
+        <div class="form-group">
+          <label for="alternateEmailId">Alternate Email ID.</label>
+          <input type="text" id="alternateEmailId" name="alternateEmailId" formControlName="alternateEmailId">
+        </div>
+        <div class="form-group">
+          <label for="password">Password *</label>
+          <input type="password" id="password" name="password" required formControlName="password" tabindex="8">
+          <div *ngIf="newUserRegistrationForm.get('password')?.hasError('required') && newUserRegistrationForm.get('password')?.touched" class="validation-message">
+            Password is required.
+          </div>
+          <div *ngIf="newUserRegistrationForm.get('password')?.hasError('invalidPassword') && newUserRegistrationForm.get('password')?.touched" class="validation-message">
+            Password must be at least 6 characters and include one special character, one number, one uppercase letter, and one lowercase letter.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="retypePassword">Re Type Password *</label>
+          <input type="password" id="retypePassword" name="retypePassword" required  formControlName="retypePassword" tabindex="9">
+          <div *ngIf="newUserRegistrationForm.get('retypePassword')?.hasError('passwordMismatch') && newUserRegistrationForm.get('retypePassword')?.touched" class="validation-message">
+            Passwords do not match.
+          </div>
+        </div>    
+        <button type="submit">Create Account</button>
+      </form>
+    </div>
+
+    <!-- [disabled]="newUserRegistrationForm.invalid" [ngClass]="{'invalid-button': newUserRegistrationForm.invalid}"-->

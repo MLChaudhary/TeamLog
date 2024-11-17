@@ -1,0 +1,61 @@
+<div class="new-employee-container">
+    <div class="header">
+        <h2>New Employee Registration</h2>
+        <button class="close-button" (click)="onClose()">X Close</button>
+    </div>
+    <form [formGroup]="newEmployeeForm" (ngSubmit)="onSave()">
+      <div class="form-group">
+        <label for="firstName">First Name *</label>
+        <input formControlName="firstName" type="text" id="firstName" required>
+        <div *ngIf="newEmployeeForm.get('firstName')?.hasError('required') && newEmployeeForm.get('firstName')?.touched" class="validation-message">
+            First Name is required.
+          </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="middleName">Middle Name *</label>
+        <input formControlName="middleName" type="text" id="middleName" required>
+        <div *ngIf="newEmployeeForm.get('middleName')?.hasError('required') && newEmployeeForm.get('middleName')?.touched" class="validation-message">
+            Middel Name is required.
+          </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="lastName">Last Name *</label>
+        <input formControlName="lastName" type="text" id="lastName" required>
+        <div *ngIf="newEmployeeForm.get('lastName')?.hasError('required') && newEmployeeForm.get('lastName')?.touched" class="validation-message">
+            Last Name is required.
+          </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="department">Department *</label>
+        <input formControlName="department" type="text" id="department" required>
+        <div *ngIf="newEmployeeForm.get('department')?.hasError('required') && newEmployeeForm.get('department')?.touched" class="validation-message">
+            Department is required.
+          </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="dateOfJoin">Date of Join </label>
+        <input formControlName="dateOfJoin" type="text" id="dateOfJoin" required>
+      </div>    
+  
+      <div class="form-group">
+        <label for="dateOfBirth">Date of Birth </label>
+        <input formControlName="dateOfBirth" type="text" id="dateOfBirth" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="salary">Salary </label>
+        <input formControlName="Salary" type="text" id="salary" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="address">Address </label>
+        <textarea formControlName="address" id="address" required></textarea>
+      </div>
+      <button type="button" (click)="onSave()">{{ buttonLabel }}</button>
+    </form>
+  </div>
+  

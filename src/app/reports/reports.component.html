@@ -1,0 +1,34 @@
+<div class="container">
+    <button class="close-btn" (click)="closeReport()">X Close</button>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label>User</label>
+        <select [(ngModel)]="selectedUser">
+          <option *ngFor="let user of users" [value]="user.FirstName">{{ user.FirstName  }}</option>
+        </select>
+      </div>
+    
+      <div class="form-group">       
+        <label>Month</label>
+        <select [(ngModel)]="selectedMonth">
+          <option *ngFor="let month of months" [value]="month">{{ month }}</option>
+        </select>
+      </div>
+    
+      <div class="form-group">
+        <label>Year</label>
+        <select [(ngModel)]="selectedYear">
+          <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+        </select>
+      </div>
+      
+      <button class="generate-btn" (click)="generateReport()">Generate Report</button>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <canvas id="myPieChart" width="200" height="200"></canvas>
+      </div>
+    </div>
+  </div>
+  

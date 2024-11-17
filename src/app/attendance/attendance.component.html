@@ -1,0 +1,18 @@
+<div class="container">
+    <button class="close-btn" (click)="closeAttendance()">X Close</button>
+    <h2></h2>
+    <div class="attendance-input">
+        <label for="employeeId">Attendance File Upload</label>
+        <input type="text" id="employeeId" [(ngModel)]="employeeId" />
+        <input type="file" #fileInput style="display: none" (change)="uploadFile($event)" accept=".xls, .xlsx" />
+        <button class="choose-file-btn" (click)="fileInput.click()">Choose File</button>
+    </div>
+    <div class="action-buttons">
+      <button class="download-btn" (click)="downloadTemplate()">Download Template</button>
+      <button class="upload-btn" (click)="uploadFileData()">Upload File</button>
+    </div>
+    <div *ngIf="showValidationMessage" class="validation-message" [innerHTML]="validationMessage">
+      {{ validationMessage }}
+    </div>
+</div>    
+  

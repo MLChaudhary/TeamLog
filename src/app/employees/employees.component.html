@@ -1,0 +1,54 @@
+<div class="employee-page">
+  <div class="header">
+    <button class="addNew-button" (click)="addNewEmployee()">Add New</button>
+    <button class="close-button" (click)="closePage()">X Close</button>
+  </div>      
+
+  <div class="search-section">
+    <button class="search-button" (click)="search()">Btn Search</button>
+    <div class="search-field">
+      <label for="searchFirstName">Employee F Name</label>
+      <input type="text" [(ngModel)]="searchFirstName" name="searchFirstName" placeholder="Enter First Name"/>
+    </div>
+    <div class="search-field">
+      <label for="departmentSelect">Department</label>
+      <select id="departmentSelect" name="departmentSelect" [(ngModel)]="searchDepartment">
+        <option value="">All</option>
+        <option value="HR">HR</option>
+        <option value="IT">IT</option>
+        <option value="Finance">Finance</option>
+        <option value="Sales">Sales</option>
+        <option value="Marketing">Marketing</option>
+        <option value="R&D">R&D</option>
+      </select>
+    </div>
+  </div>      
+     
+  <table class="employee-table">
+    <thead>
+      <tr>       
+        <th>F Name</th>
+        <th>M Name</th>
+        <th>L Name</th>
+        <th>Department</th>
+        <th>Date of Join</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employeeList">
+        <td>{{ employee.FirstName }}</td>
+        <td>{{ employee.MiddleName }}</td>
+        <td>{{ employee.LastName }}</td>
+        <td>{{ employee.Department }}</td>
+        <td>{{ employee.DateOfJoin | date:'yyyy-MM-dd' }}</td>
+        <td>   
+          <button class="update-button" (click)="updateEmployee(employee.FirstName, employee.MiddleName, employee.LastName, employee.Department)">Update</button>
+          <button class="delete-button" (click)="deleteEmployee(employee.EmployeeID)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+    
